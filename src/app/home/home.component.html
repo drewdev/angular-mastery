@@ -1,0 +1,18 @@
+<div class="mb-4 space-y-6 max-w-sm mx-auto" >
+  <h1 class="text-2xl my-4">Welcome to Angular Mastery</h1>
+<app-user-card [username]="userName" (greet)="handleGreeting($event)" />
+
+@if (greeting()) {
+  <p class="mt-4 text-green-600 font-medium">{{ greeting() }}</p>
+}
+@else {
+  <p class="text-gray-500">There is no greeting yet.</p>
+}
+</div>
+
+
+<app-login-form class="mt-8" />
+
+<app-counter class="mt-8" />
+
+<app-user-input class="mt-8" />

@@ -1,0 +1,26 @@
+<div class="flex flex-col gap-1 relative">
+  @if (label) {
+    <label class="text-sm font-medium text-gray-700 mt-2">{{ label }}</label>
+  }
+
+  <input
+    [type]="inputTypeValue"
+    [value]="value"
+    (input)="updateValue($event)"
+    (blur)="onTouched()"
+    [placeholder]="placeholder"
+    [disabled]="isDisabled"
+    [class.border-red-500]="error"
+    class="border p-2 pr-14 rounded text-sm w-full"
+  />
+
+  @if (inputType === 'password' && showToggle) {
+    <button
+      type="button"
+      (click)="toggleVisibility()"
+      class="absolute right-2 top-9 text-xs text-gray-500 hover:text-gray-800"
+    >
+      {{ isVisible ? 'Hide' : 'Show' }}
+    </button>
+  }
+</div>

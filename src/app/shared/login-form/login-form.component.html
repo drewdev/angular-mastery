@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-3 max-w-sm mx-auto p-6 bg-white rounded shadow">
+  <app-input-text
+    formControlName="email"
+    inputType="text"
+    label="Email"
+    placeholder="Enter your email"
+    [error]="form.get('email')?.touched && form.get('email')?.invalid"
+  />
+  @if (form.get('email')?.touched && form.get('email')?.invalid) {
+    <p class="text-red-600 text-sm mb-2">Invalid email.</p>
+  }
+
+  <app-input-text
+    formControlName="password"
+    inputType="password"
+    label="Password"
+    placeholder="Enter your password"
+    [showToggle]="true"
+    [error]="form.get('password')?.touched && form.get('password')?.invalid"
+  />
+  @if (form.get('password')?.touched && form.get('password')?.invalid) {
+    <p class="text-red-600 text-sm mt-1">Password should be at least 6 characters long.</p>
+  }
+
+  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+    Login
+  </button>
+
+  <hr class="my-6">
+
+  <h3 class="text-sm text-gray-600 font-semibold">Current state:</h3>
+  <pre class="bg-gray-100 p-3 rounded text-sm">{{ formValue() | json }}</pre>
+
+  <p class="mt-2 text-sm" [class.text-green-600]="isValid()" [class.text-red-600]="!isValid()">
+    Is form valid: {{ isValid() }}
+  </p>
+
+</form>
