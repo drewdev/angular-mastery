@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor } from '@angular/forms';
+import { FormErrorsComponent } from '../form-errors/form-errors.component';
 
 @Component({
   selector: 'app-base-input',
   standalone: true,
-  imports: [],
+  imports: [FormErrorsComponent],
   templateUrl: './base-input.component.html',
   styleUrl: './base-input.component.scss',
 })
@@ -13,7 +14,7 @@ export abstract class BaseInputComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() placeholder = '';
   @Input() showToggle: boolean | undefined = false;
-  @Input() error: boolean | undefined = false;
+  @Input() control!: AbstractControl | null;
   value = '';
   isDisabled = false;
   isVisible = false;

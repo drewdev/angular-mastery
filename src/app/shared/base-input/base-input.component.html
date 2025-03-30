@@ -10,7 +10,7 @@
     (blur)="onTouched()"
     [placeholder]="placeholder"
     [disabled]="isDisabled"
-    [class.border-red-500]="error"
+    [class.border-red-500]="control?.touched && control?.invalid"
     class="border p-2 pr-14 rounded text-sm w-full"
   />
 
@@ -23,4 +23,5 @@
       {{ isVisible ? 'Hide' : 'Show' }}
     </button>
   }
+  <app-form-errors [control]="control" />
 </div>
